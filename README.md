@@ -14,5 +14,11 @@ legal means
   a path cannot go through the same point twice
 
 # Recursive Abstraction
-In order to reach the endpoint,
-one should reach the closest intersection next to the endpoint.
+
+The recursive abstraction can go to the next legal intersection point in the maze
+
+# Backtracking
+  If there is no legal next point,
+    go back and try next available point from that intersection
+  Until you have reached the treasure
+
