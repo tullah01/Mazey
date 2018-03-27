@@ -14,7 +14,5 @@ legal means
   a path cannot go through the same point twice
 
 # Recursive Abstraction
-
-The recursive abstraction can go to the next intersection poin tin the maze
-  If there is no legal next point,
-  go back and try next available patch from that intersection
+In order to reach the endpoint,
+one should reach the closest intersection next to the endpoint.
