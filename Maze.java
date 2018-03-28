@@ -36,6 +36,28 @@ public class Maze{
 		layout[2][1] = ".";
 	}
 
+	public void wraping(){
+		wrap = new String[layout.length + 2][layout[0].length + 2];
+		for(int x = 0; x < warp[0].length; x++){
+			wrap[0][x] = "";
+		}
+		for(int x = 0; x < warp[warp.length - 1].length; x++){
+			wrap[wrap.length - 1][x] = "";
+		}
+		for(int x = 0; x < warp.length; x++){
+			wrap[x][0] = "";
+		}
+		for(int x = 0; x < warp.length; x++){
+			wrap[x][wrap[x].length - 1] = "";
+		}
+		for(int x = 1; x < layout.length; x++){
+			for(int y = 1; y < layout[x].length + 1; y++){
+				if(layout[x][y] == null){z += " ";}else{z+= layout[x][y];}
+			}
+			z += System.lineSeparator();
+		}		
+	}
+
 	public void autoSolve(){
 		
 	}
