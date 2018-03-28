@@ -1,8 +1,12 @@
-public Maze{
-	public String[][] size;
+public class Maze{
+	public String[][] layout;
 	
-	public Maze(size){
-		size = new String[size][size];
+	public Maze(){
+		this.defaultInitialize();
+	}
+
+	public Maze(int size){
+		layout = new String[size][size];
 	}
 
 	public void manualInitialize(){
@@ -14,22 +18,22 @@ public Maze{
 	}
 
 	public void setStart(int x, int y){
-		size[x][y] = "S";
+		layout[x][y] = "S";
 	}
 
 	public void setEnd(int x, int y){
-		size[x][y] = "E";
+		layout[x][y] = "E";
 	}
 
 	public void defaultInitialize(){
-		size = new String[5][5];
+		layout = new String[5][5];
 		setStart(2,0);
 		setEnd(0,2);
-		size[1,2] = ".";
-		size[2,2] = ".";
-		size[3,2] = ".";
-		size[4,2] = ".";
-		size[2,1] = ".";
+		layout[1][2] = ".";
+		layout[2][2] = ".";
+		layout[3][2] = ".";
+		layout[4][2] = ".";
+		layout[2][1] = ".";
 	}
 
 	public void autoSolve(){
@@ -37,10 +41,19 @@ public Maze{
 	}
 
 	public String toString(){
-		
+		String z = "";		
+		for(int x = 0; x < layout.length; x++){
+			for(int y = 0; y < layout[x].length; y++){
+				if(layout[x][y] == null){z += " ";}else{z+= layout[x][y];}
+			}
+			z += System.lineSeparator();
+		}
+		return z;
 	}
 
 	public static void main(String[] args){
-		
+		Maze example = new Maze();
+		example.defaultInitialize();		
+		System.out.println(example);
 	}
 }
