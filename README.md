@@ -1,7 +1,10 @@
+# Urgent Issue
+Link this repo to Mr. Holmes' repo.
+
 # Mazey
 
 ## Personnel
-Tamzid Ullah && Tiarun Liu
+Tamzid Ullah && Tianrun Liu
 
 # Statement of Problem
 Returns the Boolean value of the statement “the maze is navigable, having a legal travel path that is continuous from start point to existing treasure”
