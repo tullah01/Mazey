@@ -36,26 +36,27 @@ public class Maze{
 		layout[2][1] = ".";
 	}
 
-	public void wraping(){
-		wrap = new String[layout.length + 2][layout[0].length + 2];
-		for(int x = 0; x < warp[0].length; x++){
+	public String[][] wraping(){
+		String[][] wrap = new String[layout.length + 2][layout[0].length + 2];
+		for(int x = 0; x < wrap[0].length; x++){
 			wrap[0][x] = "";
 		}
-		for(int x = 0; x < warp[warp.length - 1].length; x++){
+		for(int x = 0; x < wrap[wrap.length - 1].length; x++){
 			wrap[wrap.length - 1][x] = "";
 		}
-		for(int x = 0; x < warp.length; x++){
+		for(int x = 0; x < wrap.length; x++){
 			wrap[x][0] = "";
 		}
-		for(int x = 0; x < warp.length; x++){
+		for(int x = 0; x < wrap.length; x++){
 			wrap[x][wrap[x].length - 1] = "";
 		}
-		for(int x = 1; x < layout.length; x++){
-			for(int y = 1; y < layout[x].length + 1; y++){
-				if(layout[x][y] == null){z += " ";}else{z+= layout[x][y];}
+		for(int x = 0; x < layout.length; x++){
+			for(int y = 0; y < layout[x].length; y++){
+				if(layout[x][y] == null){wrap[x + 1][y + 1] = " ";}
+				else{wrap[x + 1][y + 1]  = layout[x][y];}
 			}
-			z += System.lineSeparator();
-		}		
+		}
+		return wrap;
 	}
 
 	public void autoSolve(){
@@ -73,9 +74,21 @@ public class Maze{
 		return z;
 	}
 
+	public static String toString(String[][] z){
+		String s = "";
+		for(int x = 0; x < z.length; x++){
+			for(int y = 0; y < z[x].length; y++){
+				if(z[x][y] == null){s += " ";}else{s+= z[x][y];}
+			}
+			s += System.lineSeparator();
+		}
+		return s;
+	}
+
 	public static void main(String[] args){
 		Maze example = new Maze();
 		example.defaultInitialize();		
 		System.out.println(example);
+		example.wraping();
 	}
 }
