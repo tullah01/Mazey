@@ -21,6 +21,8 @@ public class Maze {
     public final static int WALL = 1;
     public final static int STEPPING_STONE = 2;
     
+	public final static int EXPLORED = 3;
+
     // directions that can be searched
     public final static int EAST =  1;
     public final static int NORTH = 2;
@@ -30,16 +32,18 @@ public class Maze {
           in the unlikely event that we ever want to add north-west, etc.:
           2+4 --> 6  */
     
-    private int[][] maze;
-    private final static int MAX_RANKS = 64;
-    private int rankCount;  // number of ranks in a constructed Maze
+    public int[][] maze;
+    public final static int MAX_RANKS = 64;
+    public int rankCount;  // number of ranks in a constructed Maze
     
-    private Vector explorerPosition;  // see Vector inner class, below
+    public Vector explorerPosition;  // see Vector inner class, below
 
     /**
       Construct an instance from the contents of a file.
       For v0, maze is rectangular, with every line having the same length.
      */
+	public Maze(){}
+
     public Maze( String sourceFilename
                , int explorerRank, int explorerFile
                ) throws java.io.FileNotFoundException {
@@ -187,14 +191,14 @@ public class Maze {
          o  a location in a maze, being a displacement from (0,0)
        A location outside the maze is represented by a null Vector.
      */
-    private class Vector {
-        private int rank, file;
+    public class Vector {
+        public int rank, file;
         
         // The no-arg constructor produces [0, 0] 
-        private Vector() {}
+        public Vector() {}
 
         // copy-constructor
-        private Vector( Vector old) {
+        public Vector( Vector old) {
             rank = old.rank;
             file = old.file;
         }
@@ -205,7 +209,7 @@ public class Maze {
            a constructor cannot produce a null.
          */
 
-        private Vector add( int ranks, int files) { 
+        public Vector add( int ranks, int files) { 
             rank += ranks;
             file += files;
             
@@ -224,9 +228,8 @@ public class Maze {
         /**
           @return whether this Vector matches the parameters
          */
-        private boolean equals( int rank, int file) {
+        public boolean equals( int rank, int file) {
             return this.rank == rank && this.file == file;
         }
     }
->>>>>>> 00258b11ba7bf0c8c664ffee1aa6b1a1d1b7f5d2
 }
