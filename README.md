@@ -1,6 +1,3 @@
-# Urgent Issue
-Link this repo to Mr. Holmes' repo.
-
 # Mazey
 
 ## Personnel
