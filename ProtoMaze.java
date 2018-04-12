@@ -1,11 +1,11 @@
-public class Maze{
+public class ProtoMaze{
 	public String[][] layout;
 	
-	public Maze(){
+	public ProtoMaze(){
 		this.defaultInitialize();
 	}
 
-	public Maze(int size){
+	public ProtoMaze(int size){
 		layout = new String[size][size];
 	}
 
@@ -74,7 +74,7 @@ public class Maze{
 	}
 
 	public static void main(String[] args){
-		Maze example = new Maze();
+		ProtoMaze example = new ProtoMaze();
 		example.defaultInitialize();		
 		System.out.println(example);
 	}
