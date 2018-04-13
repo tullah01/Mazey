@@ -22,7 +22,7 @@ public class Maze {
     public final static int STEPPING_STONE = 2;
     
 	public final static int EXPLORED = 3;
- 	 public Vector traceVector;
+ 	 public Vector trace;
 	  public Vector copy;
     // directions that can be searched
     public final static int EAST =  1;
