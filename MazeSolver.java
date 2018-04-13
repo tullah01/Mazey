@@ -3,8 +3,9 @@ public class MazeSolver extends Maze{
 
   public static String solve(Maze local){
     if(local.explorerIsOnA() != TREASURE){
+       local.maze[local.explorerPosition.rank][local.explorerPosition.file] = EXPLORED;
       branching(local);
-      explorable(local);
+      retrace(local);
       solve(local);
     }
     else{
@@ -14,24 +15,20 @@ public class MazeSolver extends Maze{
   }
   
   public static int explorable(Maze local){
-    if(local.maze[local.explorerPosition.rank][local.explorerPosition.file + 1] != WALL && 
-       local.maze[local.explorerPosition.rank][local.explorerPosition.file + 1] != EXPLORED){
-      local.maze[local.explorerPosition.rank][local.explorerPosition.file] = EXPLORED;
+    if(local.explorerPosition.add(0,1) != null && 
+      local.maze[local.explorerPosition.rank][local.explorerPosition.file + 1] != EXPLORED){
       return EAST;
     }
-    else if(local.maze[local.explorerPosition.rank - 1][local.explorerPosition.file] != WALL && 
-       local.maze[local.explorerPosition.rank][local.explorerPosition.file + 1] != EXPLORED){
-      local.maze[local.explorerPosition.rank][local.explorerPosition.file] = EXPLORED;    
+    else if(local.explorerPosition.add(1,0) != null && 
+      local.maze[local.explorerPosition.rank + 1][local.explorerPosition.file] != EXPLORED){  
       return NORTH;
     }
-        else if(local.maze[local.explorerPosition.rank][local.explorerPosition.file - 1] != WALL && 
-       local.maze[local.explorerPosition.rank][local.explorerPosition.file + 1] != EXPLORED){
-       local.maze[local.explorerPosition.rank][local.explorerPosition.file] = EXPLORED;
+        else if(local.explorerPosition.add(0,-1) != null && 
+       local.maze[local.explorerPosition.rank][local.explorerPosition.file - 1] != EXPLORED){
       return WEST;
     }
-        else if(local.maze[local.explorerPosition.rank + 1][local.explorerPosition.file] != WALL && 
-       local.maze[local.explorerPosition.rank][local.explorerPosition.file + 1] != EXPLORED){
-            local.maze[local.explorerPosition.rank][local.explorerPosition.file] = EXPLORED;
+        else if(local.explorerPosition.add(-1,0) != null && 
+       local.maze[local.explorerPosition.rank - 1][local.explorerPosition.file] != EXPLORED){
       return SOUTH;
     }
       else{
@@ -46,10 +43,13 @@ public class MazeSolver extends Maze{
        copy.add(-1,0) && copy.add(0,1) != null ||
        copy.add(-1,0) && copy.add(0,-1) != null ||
        copy.add(0,1) && copy.add(0,-1))
-    {local.trace;}
+    {local.trace = new Vector(local.explorerPosition);}
   }
   
   public static void retrace(Maze local){
-   
+    if(direction != -1){go(explorable(local));}
+	  else{
+	  	local.explorerPosition = new Vector(local.traceVector);
+	  }
   }
 }
