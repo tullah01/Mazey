@@ -49,7 +49,7 @@ public class MazeSolver extends Maze{
   public static void retrace(Maze local){
     if(direction != -1){go(explorable(local));}
 	  else{
-	  	local.explorerPosition = new Vector(local.traceVector);
+	  	local.explorerPosition = new Vector(local.trace);
 	  }
   }
 }
