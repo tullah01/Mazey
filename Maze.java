@@ -192,6 +192,23 @@ public class Maze {
          o  a location in a maze, being a displacement from (0,0)
        A location outside the maze is represented by a null Vector.
      */
+
+  public void branching(){
+    if(copy.add(1,0) != null && copy.add(0,1) != null ||
+       copy.add(1,0) != null && copy.add(0,-1) != null ||
+       copy.add(1,0) != null && copy.add(-1,0) != null ||
+       copy.add(-1,0) != null && copy.add(0,1) != null ||
+       copy.add(-1,0) != null && copy.add(0,-1) != null ||
+       copy.add(0,1) != null && copy.add(0,-1) != null)
+    {trace = new Vector(explorerPosition);}
+  }
+  
+  public void retrace(){
+    if(MazeSolver.explorable(this) != -1){go(MazeSolver.explorable(this));}
+	  else{
+	  	explorerPosition = new Vector(trace);
+	  }
+  }
     public class Vector {
         public int rank, file;
         
