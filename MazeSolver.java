@@ -4,8 +4,8 @@ public class MazeSolver extends Maze{
   public static String solve(Maze local){
     if(local.explorerIsOnA() != TREASURE){
        local.maze[local.explorerPosition.rank][local.explorerPosition.file] = EXPLORED;
-      branching(local);
-      retrace(local);
+      local.branching();
+      local.retrace();
       solve(local);
     }
     else{
@@ -36,20 +36,5 @@ public class MazeSolver extends Maze{
       }
   }
   
-  public static void branching(Maze local){
-    if(local.copy.add(1,0) && copy.add(0,1) != null ||
-       copy.add(1,0) && copy.add(0,-1) != null ||
-       copy.add(1,0) && copy.add(-1,0) != null ||
-       copy.add(-1,0) && copy.add(0,1) != null ||
-       copy.add(-1,0) && copy.add(0,-1) != null ||
-       copy.add(0,1) && copy.add(0,-1))
-    {local.trace = new Vector(local.explorerPosition);}
-  }
-  
-  public static void retrace(Maze local){
-    if(direction != -1){go(explorable(local));}
-	  else{
-	  	local.explorerPosition = new Vector(local.trace);
-	  }
-  }
+
 }
