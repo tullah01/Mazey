@@ -22,7 +22,8 @@ public class Maze {
     public final static int STEPPING_STONE = 2;
     
 	public final static int EXPLORED = 3;
-
+ 	 public Vector traceVector;
+	  public Vector copy;
     // directions that can be searched
     public final static int EAST =  1;
     public final static int NORTH = 2;
@@ -223,7 +224,6 @@ public class Maze {
               )  return this;
             else return null;  // outside maze
         }
-
 
         /**
           @return whether this Vector matches the parameters
