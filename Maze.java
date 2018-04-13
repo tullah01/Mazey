@@ -81,6 +81,8 @@ public class Maze {
         }
         
         explorerPosition = new Vector().add( explorerRank, explorerFile);
+		copy = new Vector();
+		trace = new Vector();
         // // for debugging: report explorer's location
         // System.out.println( "explorer at " + explorerPosition.rank
                           // + ", " +           explorerPosition.file);
@@ -194,12 +196,12 @@ public class Maze {
      */
 
   public void branching(){
-    if(copy.add(1,0) != null && copy.add(0,1) != null ||
-       copy.add(1,0) != null && copy.add(0,-1) != null ||
-       copy.add(1,0) != null && copy.add(-1,0) != null ||
-       copy.add(-1,0) != null && copy.add(0,1) != null ||
-       copy.add(-1,0) != null && copy.add(0,-1) != null ||
-       copy.add(0,1) != null && copy.add(0,-1) != null)
+    if(this.copy.add(1,0) != null && this.copy.add(0,1) != null ||
+       this.copy.add(1,0) != null && this.copy.add(0,-1) != null ||
+       this.copy.add(1,0) != null && this.copy.add(-1,0) != null ||
+       this.copy.add(-1,0) != null && this.copy.add(0,1) != null ||
+       this.copy.add(-1,0) != null && this.copy.add(0,-1) != null ||
+       this.copy.add(0,1) != null && this.copy.add(0,-1) != null)
     {trace = new Vector(explorerPosition);}
   }
   
@@ -237,7 +239,7 @@ public class Maze {
             
             // still in bounds?
             if(    0 <= rank && rank < rankCount
-                && 0 <= file && file < maze[ rank].length
+                && 0 <= file && file < maze[ rank].length - 1
               )  return this;
             else return null;  // outside maze
         }
