@@ -195,22 +195,7 @@ public class Maze {
        A location outside the maze is represented by a null Vector.
      */
 
-  public void branching(){
-    if(this.copy.add(1,0) != null && this.copy.add(0,1) != null ||
-       this.copy.add(1,0) != null && this.copy.add(0,-1) != null ||
-       this.copy.add(1,0) != null && this.copy.add(-1,0) != null ||
-       this.copy.add(-1,0) != null && this.copy.add(0,1) != null ||
-       this.copy.add(-1,0) != null && this.copy.add(0,-1) != null ||
-       this.copy.add(0,1) != null && this.copy.add(0,-1) != null)
-    {trace = new Vector(explorerPosition);}
-  }
   
-  public void retrace(){
-    if(MazeSolver.explorable(this) != -1){go(MazeSolver.explorable(this));}
-	  else{
-	  	explorerPosition = new Vector(trace);
-	  }
-  }
     public class Vector {
         public int rank, file;
         
@@ -241,6 +226,22 @@ public class Maze {
             if(    0 <= rank && rank < rankCount
                 && 0 <= file && file < maze[ rank].length - 1
               )  return this;
+            else return null;  // outside maze
+        }
+
+        public Vector wrap( int ranks, int files) { 
+            rank += ranks;
+            file += files;
+            
+            // // for debugging: report resulting position
+            // System.out.println( "sum: " + rank + " / " + rankCount
+                              // + ", " +    file + " / " + maze[ rank].length );
+            
+            // still in bounds?
+            if(    0 <= rank && rank < rankCount
+                && 0 <= file && file < maze[ rank].length - 1
+              )  {rank += ranks;
+            file += files;return this;}
             else return null;  // outside maze
         }
 

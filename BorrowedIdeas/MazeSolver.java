@@ -24,7 +24,7 @@ public static boolean solver(Maze solvethis){
     for(int direction:directions){
        //checks each of the directions by alternating between the four
 	
-       solvethis.dropA(Maze.3);  //makes sure that the explorer doesn't go back the same way.
+       solvethis.dropA(3);  //makes sure that the explorer doesn't go back the same way.
        
        Maze snapshot = new Maze(solvethis); // takes a picture for the explorer to return to, just in case it steps outside the maze
        

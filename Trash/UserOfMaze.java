@@ -13,7 +13,6 @@ public class UserOfMaze {
     public static void main(String[] commandLine)
        throws java.io.FileNotFoundException {
         System.out.println();
-
         Maze maze = new Maze( commandLine[0]
                             , Integer.parseInt( commandLine[1])
                             , Integer.parseInt( commandLine[2])
@@ -23,5 +22,5 @@ public class UserOfMaze {
       System.out.println(MazeSolver.solve(maze));
     }
 
-    }
+}
 

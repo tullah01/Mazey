@@ -2,6 +2,8 @@ public class MazeSolver extends Maze{
 
 public int traceSteps = 3;
 	
+	public MazeSolver{}
+
   public static String solve(Maze local){
     if(local.explorerIsOnA() != TREASURE){
       local.maze[local.explorerPosition.rank][local.explorerPosition.file] = EXPLORED;
@@ -38,7 +40,7 @@ public int traceSteps = 3;
 
 }
 
-public void branching(Maze local){
+public static void branching(Maze local){
     if(local.explorerPosition.wrap(1,0) != null && local.explorerPosition.wrap(0,1) != null ||
        local.explorerPosition.wrap(1,0) != null && local.explorerPosition.wrap(0,-1) != null ||
        local.explorerPosition.wrap(1,0) != null && local.explorerPosition.wrap(-1,0) != null ||
