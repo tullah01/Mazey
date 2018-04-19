@@ -138,7 +138,7 @@ public class Maze {
               , int explorerRank, int explorerFile
 
 
-              ) throws java.io.FileNotFoundException {
+              ){
 
 
 
