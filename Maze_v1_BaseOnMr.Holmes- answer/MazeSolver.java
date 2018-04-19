@@ -1,6 +1,36 @@
 
 
 
+public class MazeSolver {
+
+
+  
+
+
+   private Displayer displayer;  // null => no display
+
+
+   private int displayCount;  // roughly == number of moves
+
+
+
+
+
+
+
+   /**
+
+
+     Construct an instance.
+
+
+     Pass null for the Displayer for silent operation.
+
+
+    */
+
+
+
    public MazeSolver( Displayer displayer) {
 
 
