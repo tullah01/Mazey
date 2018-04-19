@@ -7,44 +7,16 @@ public class UserOfMazeSolver {
   
 
 
-   public static void main(String[] commandLine)
+   public static void main(String[] commandLine){
+
+        Displayer displayer = null;
+try{
+        if( commandLine.length >= 4)
 
 
-       throws java.io.FileNotFoundException {
-
-
-
-
-
-
-
-       Displayer displayer = null;
-
-
-      
-
-
-       // init displayer if command line arg for window height is present
-
-
-       if( commandLine.length >= 4)
-
-
-           displayer = new Displayer( Integer.parseInt( commandLine[3]));
-
-
-
-
-
-
+        displayer = new Displayer( Integer.parseInt( commandLine[3]));
 
        MazeSolver solver = new MazeSolver( displayer);
-
-
-
-
-
-
 
        Maze maze = new Maze( commandLine[0]
 
@@ -56,8 +28,11 @@ public class UserOfMazeSolver {
 
 
                            );
-
-
+}
+  catch(java.io.FileNotFoundException haha){
+       System.out.println("JVM can't detect the file, try again.");
+       System.exit();
+  }
        System.out.println(
 
 
@@ -65,6 +40,8 @@ public class UserOfMazeSolver {
 
 
            + solver.solutionExists( maze));    }
+
+   
 
 
 }
